@@ -10,9 +10,9 @@ class TasksTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Tasks"
   end
 
-  test "creating a Task" do
+  test "should create task" do
     visit tasks_url
-    click_on "New Task"
+    click_on "New task"
 
     check "Completion" if @task.completion
     fill_in "Description", with: @task.description
@@ -24,9 +24,9 @@ class TasksTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "updating a Task" do
-    visit tasks_url
-    click_on "Edit", match: :first
+  test "should update Task" do
+    visit task_url(@task)
+    click_on "Edit this task", match: :first
 
     check "Completion" if @task.completion
     fill_in "Description", with: @task.description
@@ -38,11 +38,9 @@ class TasksTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "destroying a Task" do
-    visit tasks_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+  test "should destroy Task" do
+    visit task_url(@task)
+    click_on "Destroy this task", match: :first
 
     assert_text "Task was successfully destroyed"
   end

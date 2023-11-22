@@ -1,6 +1,6 @@
 <%= form_with(model: task) do |form| %>
   <% if task.errors.any? %>
-    <div id="error_explanation">
+    <div style="color: red">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
+  <div>
+    <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
+  <div>
+    <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
-    <%= form.label :due_date %>
-    <%= form.date_select :due_date %>
+  <div>
+    <%= form.label :due_date, style: "display: block" %>
+    <%= form.date_field :due_date %>
   </div>
 
-  <div class="field">
-    <%= form.label :completion %>
+  <div>
+    <%= form.label :completion, style: "display: block" %>
     <%= form.check_box :completion %>
   </div>
 
-  <div class="actions">
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

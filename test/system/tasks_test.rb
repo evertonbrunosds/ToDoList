@@ -17,6 +17,7 @@ class TasksTest < ApplicationSystemTestCase
     check "Completion" if @task.completion
     fill_in "Description", with: @task.description
     fill_in "Due date", with: @task.due_date
+    fill_in "Priority", with: @task.priority
     fill_in "Title", with: @task.title
     click_on "Create Task"
 
@@ -31,6 +32,7 @@ class TasksTest < ApplicationSystemTestCase
     check "Completion" if @task.completion
     fill_in "Description", with: @task.description
     fill_in "Due date", with: @task.due_date
+    fill_in "Priority", with: @task.priority
     fill_in "Title", with: @task.title
     click_on "Update Task"
 

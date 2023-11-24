@@ -5,9 +5,11 @@ one:
   description: MyText
   due_date: 2023-11-22
   completion: false
+  priority: 1
 
 two:
   title: MyString
   description: MyText
   due_date: 2023-11-22
   completion: false
+  priority: 1

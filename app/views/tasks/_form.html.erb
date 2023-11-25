@@ -7,10 +7,23 @@
     <%= f.input :title %>
     <%= f.input :description, input_html: {rows: 15} %>
     <%= f.input :due_date %>
-    <%= f.label :priority %>
-    <%= f.select :priority, Task.priorities.keys.map { |p| [p.humanize, p] }, prompt: 'Select Priority' %>
-    <%= f.input :completion %>
+    
+    <div class="form-group">
+      <%= f.label :priority, class: 'control-label' %>
+      <%= f.select :priority, Task.priorities.keys.map { |p| [p.humanize, p] }, { prompt: 'Select Priority' }, class: 'form-control' %>
+    </div>
 
+    <br>
+
+    <div class="card">
+      <div class="card-body">
+        <%= f.check_box :completion %>
+        <%= f.label :completion, "Completado" %>
+      </div>
+    </div>
+
+    <br>
+          
   </div>
 
   <div class="form-actions">

@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+    belongs_to :category
+
     enum priority: [:low, :medium, :high]
 
     validates :title, presence: true

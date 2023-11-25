@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.all.sort_by { |task| task.percentage_days_remaining }
   end
 
   # GET /tasks/1 or /tasks/1.json

@@ -1,11 +1,16 @@
 class Task < ApplicationRecord
     enum priority: [:low, :medium, :high]
 
+    validates :title, presence: true
     validate :due_date_after_created_at
+    validates :priority, presence: true
 
     def due_date_after_created_at
-        if due_date.present? && due_date <= created_at
+        if due_date.present? && created_at.present? && due_date <= created_at
             errors.add(:due_date, " must be at least one day later than the one created date.")
+        end
+        if due_date.present? && due_date <= Date.today
+            errors.add(:due_date, " must be at least one day later than a current date.")
         end
     end
     
@@ -37,4 +42,7 @@ class Task < ApplicationRecord
             0  # handle the case where total_days is 0 to avoid division by zero
         end
     end
+
+    private
+
 end

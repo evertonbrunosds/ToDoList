@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         format.html { redirect_to tasks_url }
-        format.json { render :show, status: :created, location: @task }
+        format.json { render :tasks_url, status: :created, location: @task }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to tasks_url }
-        format.json { render :show, status: :ok, location: @task }
+        format.json { render :tasks_url, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @task.errors, status: :unprocessable_entity }

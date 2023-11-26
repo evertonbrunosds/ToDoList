@@ -1,14 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<center>
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div id="categories">
+      <% @categories.each do |category| %>
+        <%= render category %>
+      <% end %>
+    </div>
+  </div>
+</center>
 
-<h1>Categories</h1>
+<br>
 
-<div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New category", new_category_path %>
+<%= button_to "New category", new_category_path, method: :get, class: 'btn btn-primary' %>

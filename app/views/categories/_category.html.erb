@@ -1,12 +1,21 @@
-<div id="<%= dom_id category %>">
-  <p>
-    <strong>Name:</strong>
-    <%= category.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= category.description %>
-  </p>
-
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= dom_id category %>" aria-expanded="false" aria-controls="flush-collapse<%= dom_id category %>">
+      <%= category.name %>
+    </button>
+  </h2>
+  <div id="flush-collapse<%= dom_id category %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+    <div class="accordion-body">
+      <div class="card">
+        <div class="card-body">
+          <%= category.description %>
+        </div>
+      </div>
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic example", style="padding-bottom: 18px">
+    <%= button_to "Open tasks", edit_category_path(category), method: :get, class: 'btn btn-outline-success' %>&nbsp;&nbsp;
+      <%= button_to "Edit this category", edit_category_path(category), method: :get, class: 'btn btn-outline-primary' %>&nbsp;&nbsp;
+      <%= button_to "Destroy this category", category, method: :delete, class: 'btn btn-outline-danger' %>
+    </div>
+  </div>
 </div>

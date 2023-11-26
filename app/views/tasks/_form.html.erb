@@ -6,8 +6,10 @@
   <div class="form-inputs">
 
     <%= f.input :title %>
-    <%= f.input :description, input_html: {rows: 15} %>
+    <%= f.input :description, input_html: {rows: 13} %>
     <%= f.input :due_date %>
+
+    <%= f.association :category, collection: Category.sorted, prompt: "Select Category" %>
     
     <div class="form-group">
       <%= f.label :priority, class: 'control-label' %>

@@ -14,6 +14,7 @@ class CategoriesTest < ApplicationSystemTestCase
     visit categories_url
     click_on "New category"
 
+    fill_in "Description", with: @category.description
     fill_in "Name", with: @category.name
     click_on "Create Category"
 
@@ -25,6 +26,7 @@ class CategoriesTest < ApplicationSystemTestCase
     visit category_url(@category)
     click_on "Edit this category", match: :first
 
+    fill_in "Description", with: @category.description
     fill_in "Name", with: @category.name
     click_on "Update Category"
 

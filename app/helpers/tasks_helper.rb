@@ -18,4 +18,17 @@ module TasksHelper
       return ''
     end
 
+    def priority_type(task)
+      if  task.priority == 'high'
+        return 'bg-danger'
+      end
+      if  task.priority == 'medium'
+        return 'bg-warning'
+      end
+      if  task.priority == 'low'
+        return 'bg-success'
+      end
+      return ''
+    end
+
 end

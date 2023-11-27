@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="btn-group" role="group" aria-label="Basic example", style="padding-bottom: 18px">
-    <%= button_to "Open tasks", edit_category_path(category), method: :get, class: 'btn btn-outline-success' %>&nbsp;&nbsp;
+    <%= button_to "Open tasks", category_tasks_path(category), method: :get, class: 'btn btn-outline-success' %>&nbsp;&nbsp;
       <%= button_to "Edit this category", edit_category_path(category), method: :get, class: 'btn btn-outline-primary' %>&nbsp;&nbsp;
       <%= button_to "Destroy this category", category, method: :delete, class: 'btn btn-outline-danger' %>
     </div>

@@ -1,9 +1,10 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ edit update destroy ]
+  before_action :set_category, except: [:edit, :update, :destroy]
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all.sort_by { |task| task.percentage_days_remaining }
+    @tasks = @category.tasks.sort_by { |task| task.percentage_days_remaining }
   end
 
   # GET /tasks/new
@@ -32,31 +33,30 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to tasks_url }
-        format.json { render :tasks_url, status: :ok, location: @task }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      redirect_to category_tasks_path(@task.category)
+    else
+      render :edit
     end
   end
 
   # DELETE /tasks/1 or /tasks/1.json
   def destroy
-    @task.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to tasks_url }
-      format.json { head :no_content }
-    end
+    @task = Task.find(params[:id])
+    @task.destroy
+    set_category # Certifique-se de definir @category antes de redirecionar
+    redirect_to category_tasks_path(@category)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    def set_category
+      @category = Category.find(params[:category_id])
     end
 
     # Only allow a list of trusted parameters through.

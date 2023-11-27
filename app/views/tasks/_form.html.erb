@@ -35,6 +35,6 @@
 
   <div class="form-actions">
     <%= f.button :submit, class: 'btn btn-primary' %>
-    <%= link_to "Back to tasks", tasks_path, class: 'btn btn-outline-primary' %>
+    <%= link_to "Back to tasks", category_tasks_path(@task.category), class: 'btn btn-outline-primary' %>
   </div>
 <% end %>

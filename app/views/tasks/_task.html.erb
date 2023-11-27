@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="btn-group" role="group" aria-label="Basic example", style="padding-bottom: 18px">
-      <%= button_to "Edit this task", edit_task_path(task), method: :get, class: 'btn btn-outline-primary' %>&nbsp;&nbsp;
+      <%= button_to "Edit this task", edit_category_task_path(@category, task), method: :get, class: 'btn btn-outline-primary' %>&nbsp;&nbsp;
       <%= button_to "Destroy this task", task, method: :delete, class: 'btn btn-outline-danger' %>
     </div>
   </div>

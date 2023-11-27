@@ -5,6 +5,9 @@ module TasksHelper
     end
 
     def progressbar_type(task)
+      if task.completion
+        return 'bg-secondary'
+      end
       percentage = task.percentage_days_remaining.round(2)
       if  0 < percentage && percentage <= 33.33
         return 'bg-danger'
@@ -19,6 +22,9 @@ module TasksHelper
     end
 
     def priority_type(task)
+      if task.completion
+        return 'bg-secondary'
+      end
       if  task.priority == 'high'
         return 'bg-danger'
       end
@@ -30,5 +36,14 @@ module TasksHelper
       end
       return ''
     end
+
+    def count_completed_tasks(tasks)
+      tasks.count { |task| task.completion }
+    end
+
+    def count_incomplete_tasks(tasks)
+      tasks.count { |task| !task.completion }
+    end
+
 
 end

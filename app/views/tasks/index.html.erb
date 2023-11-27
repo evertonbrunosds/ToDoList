@@ -1,11 +1,55 @@
 <center>
-  <div class="accordion accordion-flush" id="accordionFlushExample">
-    <div id="tasks">
-      <% @tasks.each do |task| %>
-        <%= render task %>
-      <% end %>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+        Incompleted Tasks
+        <small>
+          <h10>
+            <span class="badge bg-danger rounded-pill">
+              <%= count_incomplete_tasks(@tasks) %>
+            </span>
+          </h10>
+        </small>
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+        Completed Tasks
+        <small>
+          <h10>
+            <span class="badge bg-success rounded-pill">
+              <%= count_completed_tasks(@tasks) %>
+            </span>
+          </h10>
+        </small>
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div id="tasks">
+        <% @tasks.each do |task| %>
+          <% unless task.completion %>
+            <%= render task %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div id="tasks">
+        <% @tasks.each do |task| %>
+          <% if task.completion %>
+            <%= render task %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 </center>
 
 <%= button_to "New task", new_category_task_path(@category), method: :get, class: 'btn btn-primary' %>
+<%= link_to "Back to Categories", categories_path, class: 'btn btn-outline-primary' %>

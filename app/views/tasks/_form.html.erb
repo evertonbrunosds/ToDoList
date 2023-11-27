@@ -6,32 +6,40 @@
   <div class="form-inputs">
 
     <%= f.input :title %>
-    <%= f.input :description, input_html: {rows: 13} %>
+    <%= f.input :description, input_html: {rows: 18} %>
     <%= f.input :due_date %>
 
-    <%= f.association :category, collection: Category.sorted, prompt: "Select Category" %>
-    
-    <div class="form-group">
-      <%= f.label :priority, class: 'control-label' %>
-      <%= f.select :priority, Task.priorities.keys.map { |p| [p.humanize, p] }, { prompt: 'Select Priority' }, class: 'form-control' %>
-    </div>
-
-    <br>
-
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex justify-content-center align-items-center">
-          <div class="form-check form-switch">
-            <%= f.check_box :completion, class: "form-check-input", role: "switch", id: "flexSwitchCheckCompletion" %>
-            <%= f.label :completion, "Completion", class: "form-check-label", for: "flexSwitchCheckCompletion" %>
+    <div style="display:flex;">
+      <div class="card", style="flex:1;">
+        <div class="card-body">
+          <%= f.label :priority, class: 'control-label' %>
+          <div class="form-group", style="padding-top:10px;">
+            <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
+              <% Task.priorities.keys.each do |priority| %>
+                <input type="radio" class="btn-check" name="task[priority]" id="<%= "priority-#{priority}" %>" <%= f.radio_button :priority, priority, class: 'd-none' %>
+                <label class="btn btn-outline-primary" for="<%= "priority-#{priority}" %>"><%= priority.humanize %></label>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
+      <div class="card", style="flex:1;margin-left:10px;margin-right:10px;">
+        <div class="card-body", style="display:flex;align-items: center;justify-content: center;">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="form-check form-switch">
+              <%= f.check_box :completion, class: "form-check-input", role: "switch", id: "flexSwitchCheckCompletion" %>
+              <%= f.label :completion, "Completion", class: "form-check-label", for: "flexSwitchCheckCompletion" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card", style="flex:1;display:flex;align-items:center;justify-content:center;">
+        <%= f.association :category, collection: Category.sorted, prompt: "Select Category" %>
+      </div>
     </div>
-
-    <br>
-          
   </div>
+
+  <hr>
 
   <div class="form-actions">
     <%= f.button :submit, class: 'btn btn-primary' %>

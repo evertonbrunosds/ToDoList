@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ edit update destroy ]
-  before_action :set_category, except: [:edit, :update, :destroy]
+  before_action :set_category, except: %i[edit update ]
 
   # GET /tasks or /tasks.json
   def index
@@ -9,7 +9,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    @task = @category.tasks.new
   end
 
   # GET /tasks/1/edit
@@ -18,16 +18,11 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = Task.new(task_params)
-
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to tasks_url }
-        format.json { render :tasks_url, status: :created, location: @task }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    @task = @category.tasks.new(task_params)
+    if @task.save
+      redirect_to category_tasks_path(@task.category)
+    else
+      render :new
     end
   end
 
@@ -45,7 +40,6 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    set_category # Certifique-se de definir @category antes de redirecionar
     redirect_to category_tasks_path(@category)
   end
 

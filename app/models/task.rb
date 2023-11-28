@@ -31,7 +31,7 @@ class Task < ApplicationRecord
     # Função para calcular quantos dias faltam até o due_date
     def days_until_due_date
         if due_date.present?
-            (due_date.to_date - Date.today.to_date).to_i
+            (due_date.to_date - Date.today.to_date).to_i - 1
         else
             0  # ou outra lógica, dependendo do seu caso
         end

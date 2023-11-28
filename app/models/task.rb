@@ -22,7 +22,7 @@ class Task < ApplicationRecord
     # Adicione esta função para calcular a diferença em dias entre created_at e due_date
     def days_until_due
         if due_date.present?
-            (due_date.to_date - created_at.to_date).to_i
+            (Date.parse(due_date.strftime('%Y-%m-%d')) - Date.parse(created_at.strftime('%Y-%m-%d'))).to_i
         else
             0  # ou outra lógica, dependendo do seu caso
         end
@@ -31,7 +31,7 @@ class Task < ApplicationRecord
     # Função para calcular quantos dias faltam até o due_date
     def days_until_due_date
         if due_date.present?
-            (due_date.to_date - Date.today.to_date).to_i - 1
+            (Date.parse(due_date.strftime('%Y-%m-%d')) - Date.parse(Date.today.strftime('%Y-%m-%d'))).to_i
         else
             0  # ou outra lógica, dependendo do seu caso
         end

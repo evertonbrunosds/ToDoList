@@ -6,12 +6,14 @@
           <h5 class="mb-1"><%= category.name %></h5>
         </div>
         <hr>
-        <span class="badge bg-danger rounded-pill">
-          Incompleted tasks: <%= count_incomplete_tasks_in_category(category) %>
-        </span>
-        <span class="badge bg-secondary rounded-pill">
-          Completed tasks: <%= count_completed_tasks_in_category(category) %>
-        </span>
+        <h4>
+          <span class="badge bg-danger rounded-pill">
+            Incompleted tasks: <%= count_incomplete_tasks_in_category(category) %>
+          </span>
+          <span class="badge bg-secondary rounded-pill">
+            Completed tasks: <%= count_completed_tasks_in_category(category) %>
+          </span>
+        </h4>
       </a>
     </button>
   </h2>

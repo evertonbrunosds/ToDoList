@@ -1,0 +1,25 @@
+<a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">
+            <%= task.title %>
+        </h5>
+        <h4>
+            <span class="badge <%= completion_due_date_type(task) %> rounded-pill">
+                Vencimento em <%= month_day_comma_year(task.due_date) %>.
+            </span>
+        </h4>
+    </div>
+    <p class="mb-1">
+        <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="<%= task.percentage_days_remaining.round(2) %>" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar <%= progressbar_type(task) %>" style="width: <%= task.percentage_days_remaining.round(2) %>%"></div>
+        </div>
+    </p>
+    <h4>
+        <span class="badge bg-secondary rounded-pill">
+            Criação em <%= month_day_comma_year(task.created_at) %>
+        </span>
+        <span class="badge bg-secondary rounded-pill">
+            Dias disponíveis na atualidade <%= task.days_until_due_date %>.
+        </span>
+    </h4>
+</a>

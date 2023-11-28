@@ -1,7 +1,11 @@
 module TasksHelper
 
+    def count_tasks_by_priority_and_status(priority, completion, category_id)
+      return Task.where(priority: priority, completion: completion, category_id: category_id).count
+    end
+
     def month_day_comma_year(datetime)
-        datetime.strftime('%d/%m/%Y')
+      datetime.strftime('%d/%m/%Y')
     end
 
     def progressbar_type(task)
@@ -21,20 +25,12 @@ module TasksHelper
       return ''
     end
 
-    def priority_type(task)
+    def completion_due_date_type(task)
       if task.completion
         return 'bg-secondary'
-      end
-      if  task.priority == 'high'
+      else
         return 'bg-danger'
       end
-      if  task.priority == 'medium'
-        return 'bg-warning'
-      end
-      if  task.priority == 'low'
-        return 'bg-success'
-      end
-      return ''
     end
 
     def count_completed_tasks(tasks)

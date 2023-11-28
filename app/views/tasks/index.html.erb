@@ -25,30 +25,155 @@
       </button>
     </li>
   </ul>
-  <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-      <div id="tasks">
-        <% @tasks.each do |task| %>
-          <% unless task.completion %>
-            <%= render task %>
-          <% end %>
-        <% end %>
+  <div class="tab-content" id="myTabContent" style="height:100%;">
+    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+      <hr>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Tabs verticais -->
+          <div class="col-md-2">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active" id="v-pills-tab1" data-toggle="pill" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">
+                High Priority
+                <span class="badge bg-danger rounded-pill">
+                  <%= count_tasks_by_priority_and_status('high', false, @category.id) %>
+                </span>
+              </a>
+              <a class="nav-link" id="v-pills-tab2" data-toggle="pill" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">
+                Medium Priority
+                <span class="badge bg-danger rounded-pill">
+                  <%= count_tasks_by_priority_and_status('medium', false, @category.id) %>
+                </span>
+              </a>
+              <a class="nav-link" id="v-pills-tab3" data-toggle="pill" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">
+                Low Priority
+                <span class="badge bg-danger rounded-pill">
+                  <%= count_tasks_by_priority_and_status('low', false, @category.id) %>
+                </span>
+              </a>
+            </div>
+          </div>
+          <!-- Conteúdo das tabs -->
+          <div class="col-md-10">
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="v-pills-tab1">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                  <div id="tasks">
+                    <% @tasks.each do |task| %>
+                      <% unless task.completion %>
+                        <% if task.priority == 'high'%>
+                          <%= render 'accordion_item', task: task %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="v-pills-tab2">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                  <div id="tasks">
+                    <% @tasks.each do |task| %>
+                      <% unless task.completion %>
+                        <% if task.priority == 'medium'%>
+                          <%= render 'accordion_item', task: task %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="v-pills-tab3">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                  <div id="tasks">
+                    <% @tasks.each do |task| %>
+                      <% unless task.completion %>
+                        <% if task.priority == 'low'%>
+                          <%= render 'accordion_item', task: task %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+      <hr>
+      <div class="container-fluid">
+      <div class="row">
+        <!-- Tabs verticais -->
+        <div class="col-md-2">
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-tab_1" data-toggle="pill" href="#tab_1" role="tab" aria-controls="tab_1" aria-selected="true">
+              High Priority
+              <span class="badge bg-secondary rounded-pill">
+                <%= count_tasks_by_priority_and_status('high', true, @category.id) %>
+              </span>
+            </a>
+            <a class="nav-link" id="v-pills-tab_2" data-toggle="pill" href="#tab_2" role="tab" aria-controls="tab_2" aria-selected="false">
+              Medium Priority
+              <span class="badge bg-secondary rounded-pill">
+                <%= count_tasks_by_priority_and_status('medium', true, @category.id) %>
+              </span>
+            </a>
+            <a class="nav-link" id="v-pills-tab_3" data-toggle="pill" href="#tab_3" role="tab" aria-controls="tab_3" aria-selected="false">
+              Low Priority
+              <span class="badge bg-secondary rounded-pill">
+                <%= count_tasks_by_priority_and_status('low', true, @category.id) %>
+              </span>
+            </a>
+          </div>
+        </div>
+        <!-- Conteúdo das tabs -->
+        <div class="col-md-10">
+          <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="v-pills-tab_1">
+              <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div id="tasks">
+                  <% @tasks.each do |task| %>
+                    <% if task.completion %>
+                      <% if task.priority == 'high'%>
+                        <%= render 'accordion_item', task: task %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="tab_2" role="tabpanel" aria-labelledby="v-pills-tab_2">
+              <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div id="tasks">
+                  <% @tasks.each do |task| %>
+                    <% if task.completion %>
+                      <% if task.priority == 'medium'%>
+                        <%= render 'accordion_item', task: task %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="tab_3" role="tabpanel" aria-labelledby="v-pills-tab_3">
+              <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div id="tasks">
+                  <% @tasks.each do |task| %>
+                    <% if task.completion %>
+                      <% if task.priority == 'low'%>
+                        <%= render 'accordion_item', task: task %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-      <div id="tasks">
-        <% @tasks.each do |task| %>
-          <% if task.completion %>
-            <%= render task %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
 </center>
 
 <%= button_to "New task", new_category_task_path(@category), method: :get, class: 'btn btn-primary' %>

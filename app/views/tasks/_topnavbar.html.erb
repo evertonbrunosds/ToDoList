@@ -1,0 +1,21 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/48/Apps-Task-Manager-Metro-icon.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+      TodooList
+    </a>
+    
+    <%= link_to "Back to Categories", categories_path, class: 'btn btn-outline-primary' %>
+    <%= button_to "New task", new_category_task_path(@category), method: :get, class: 'btn btn-primary' %>
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= current_user.email %>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to 'Edit User', edit_user_registration_path, class: 'dropdown-item' %></li>
+        <li><%= button_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
+      </ul>
+    </div>
+  </div>
+</nav>

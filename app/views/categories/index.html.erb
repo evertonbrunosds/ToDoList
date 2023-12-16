@@ -1,4 +1,6 @@
-<center>
+<%= render 'topnavbar' %>
+
+<center class="content-with-navbar">
   <div class="accordion accordion-flush" id="accordionFlushExample">
     <div id="categories">
       <% @categories.each do |category| %>
@@ -9,5 +11,3 @@
 </center>
 
 <br>
-
-<%= button_to "New category", new_category_path, method: :get, class: 'btn btn-primary' %>

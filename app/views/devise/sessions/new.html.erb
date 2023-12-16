@@ -1,0 +1,32 @@
+<center>
+  <h2>Log in</h2>
+  <hr>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="form-check form-switch">
+          <%= f.check_box :remember_me, class: "form-check-input", id: "flexSwitchCheckRememberMe" %>
+          <%= f.label :remember_me, "Remember me", class: "form-check-label", for: "flexSwitchCheckRememberMe" if devise_mapping.rememberable? %>
+        </div>
+      </div>
+      <br>
+
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Log in", class: 'btn btn-primary' %>
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "Sign up", new_registration_path(resource_name), class: 'btn btn-outline-primary' %>
+      <% end %>
+    </div>
+  <% end %>
+  <hr>
+  <%= render "devise/shared/links" %>
+</center>

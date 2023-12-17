@@ -6,8 +6,6 @@ class TasksController < ApplicationController
   # GET /tasks or /tasks.json
   def index
     @tasks = @category.tasks.sort_by { |task| task.percentage_days_remaining }
-
-    @tasks_by_created = @category.tasks.group_by_month(:created_at, format: '%B %Y').count
   end
 
   # GET /tasks/new

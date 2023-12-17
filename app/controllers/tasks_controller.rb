@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task, only: %i[ edit update destroy ]
   before_action :set_category, except: %i[edit update ]
 
@@ -47,10 +48,13 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+      @currentCategory = Category.find(@task.category_id)
+      authorize @currentCategory
     end
 
     def set_category
       @category = Category.find(params[:category_id])
+      authorize @category
     end
 
     # Only allow a list of trusted parameters through.

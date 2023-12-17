@@ -1,18 +1,19 @@
 <nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/48/Apps-Task-Manager-Metro-icon.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-      TodooList
-    </a>
-    <%= button_to "New category", new_category_path, method: :get, class: 'btn btn-primary' %>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <%= current_user.email %>
-      </button>
-      <ul class="dropdown-menu">
-        <li><%= link_to 'Edit User', edit_user_registration_path, class: 'dropdown-item' %></li>
-        <li><%= button_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
-      </ul>
-    </div>
+
+  <%= button_to new_category_path, method: :get, class: 'btn btn-outline-primary', style: 'margin-left:20px;' do %>
+    <%= image_tag("https://icons.iconarchive.com/icons/graphicloads/100-flat-2/48/pen-icon.png", alt: "Back") %>
+    New category
+  <% end %>
+
+  <div class="dropdown" style='margin-right:20px;'>
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="https://icons.iconarchive.com/icons/graphicloads/100-flat-2/48/contacts-icon.png" alt="Back Arrow" class="mr-2">
+      <%= current_user.email %>
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'Edit User', edit_user_registration_path, class: 'dropdown-item' %></li>
+      <li><%= button_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
+    </ul>
   </div>
+
 </nav>

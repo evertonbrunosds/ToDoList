@@ -57,11 +57,11 @@ O Todolist é uma ferramenta que visa auxiliar seus usuários a obterem mais con
 ## Capturas de Tela
 
 <p id="simbol" align="center">
-	<img src="https://i.imgur.com/eSQLafS.png" height="600px"/>
-	<img src="https://i.imgur.com/gwW2Aim.png" height="600px"/>
-	<img src="https://i.imgur.com/mgbJwsl.png" height="600px"/>
-	<img src="https://i.imgur.com/60bX7wh.png" height="600px"/>
-	<img src="https://i.imgur.com/6sU0HJr.png" height="600px"/>
+	<img src="https://i.imgur.com/eSQLafS.png" height="600px" width="1200px" />
+	<img src="https://i.imgur.com/gwW2Aim.png" height="600px" width="1200px" />
+	<img src="https://i.imgur.com/mgbJwsl.png" height="600px" width="1200px" />
+	<img src="https://i.imgur.com/60bX7wh.png" height="600px" width="1200px" />
+	<img src="https://i.imgur.com/6sU0HJr.png" height="600px" width="1200px" />
 </p>
 
 <p align="center"><em> Copyleft © 2023. GPLv3 - Author: Everton Bruno Silva dos Santos. </em></p>

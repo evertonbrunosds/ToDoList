@@ -15,7 +15,7 @@ O Todolist é uma ferramenta que visa auxiliar seus usuários a obterem mais con
 
 ## Dados
 - USUÁRIO
-  - email; senha; categorias;
+  - email; senha;
 - CATEGORIA
   - nome; descrição; usuário;
 - TAREFA

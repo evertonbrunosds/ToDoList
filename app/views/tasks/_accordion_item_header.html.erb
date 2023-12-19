@@ -5,7 +5,7 @@
         </h5>
         <h4>
             <span class="badge <%= completion_due_date_type(task) %> rounded-pill">
-                Vencimento em <%= month_day_comma_year(task.due_date) %>.
+                Due date <%= month_day_comma_year(task.due_date) %>.
             </span>
         </h4>
     </div>
@@ -16,10 +16,10 @@
     </p>
     <h4>
         <span class="badge bg-secondary rounded-pill">
-            Criação em <%= month_day_comma_year(task.created_at) %>
+            Created at <%= month_day_comma_year(task.created_at) %>
         </span>
         <span class="badge bg-secondary rounded-pill">
-            Dias disponíveis na atualidade <%= task.days_until_due_date %>.
+            Number of days available <%= task.days_until_due_date %>.
         </span>
     </h4>
 </a>
